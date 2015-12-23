@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.happyplayer.ui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- 读取电话状态权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <!-- 往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:name="com.happyplayer.application.CrashApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity
+            android:name="com.happyplayer.ui.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.happyplayer.ui.MainActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.GuideActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.SettingActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.LocalMusicActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.MyDownloadActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.MyLoveActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.ScanMusicActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.LrcViewActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.SkinPicActivity" >
+        </activity>
+        <activity android:name="com.happyplayer.ui.SkinColorActivity" >
+        </activity>
+
+        <service android:name="com.happyplayer.service.EasytouchService" >
+        </service>
+        <service android:name="com.happyplayer.service.FloatLrcService" >
+        </service>
+        <service android:name="com.happyplayer.service.LockService" >
+        </service>
+
+        <!--
+        <receiver android:name="com.happyplayer.receiver.LockSreenReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>        -->
+        <activity
+            android:name="ShowLockActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Wallpaper.NoTitleBar" >
+        </activity>
+
+        <service android:name="com.happyplayer.service.MediaPlayerService" >
+        </service>
+
+        <receiver android:name="com.happyplayer.receiver.PhoneReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.MEDIA_BUTTON" >
+                </action>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
